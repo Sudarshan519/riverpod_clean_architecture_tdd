@@ -14,9 +14,5 @@ class BankRepositoryImpl extends BankRepository {
     return bankDatasource.fetchBanks(skip: skip);
   }
 
-  @override
-  Future<Either<AppException, BankResponseModel>> searchBanks(
-      {required int skip, required String query}) {
-    return bankDatasource.searchBanks(skip: skip, query: query);
-  }
+ 
 }

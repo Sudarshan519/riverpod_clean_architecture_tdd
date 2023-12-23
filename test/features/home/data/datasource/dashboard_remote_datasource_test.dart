@@ -23,11 +23,11 @@ void main() async {
           () async {
         // arrange
         when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
+            queryParameters: any(named: 'queryParameters'),),).thenAnswer(
           (_) async => Response(
             statusCode: 200,
             statusMessage: '',
-            data: ktestBankResponseModel,
+            data: ktestBankResponse,
           ).toRight,
         );
 
@@ -37,16 +37,15 @@ void main() async {
         // assert
         expect(resp.isRight(), true);
       });
-      test(
-          'should return [BankResponseModel] on success and the data is not in valid format',
+      test('should return on success and the data is not in valid format',
           () async {
         // arrange
         when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
+            queryParameters: any(named: 'queryParameters'),),).thenAnswer(
           (_) async => Response(
             statusCode: 200,
             statusMessage: '',
-            data: {},
+            data: <String, dynamic>{},
           ).toRight,
         );
 
@@ -60,7 +59,7 @@ void main() async {
           () async {
         // arrange
         when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
+            queryParameters: any(named: 'queryParameters'),),).thenAnswer(
           (_) async => Response(
             statusCode: 200,
             statusMessage: '',
@@ -77,86 +76,12 @@ void main() async {
       test('should return [AppException] on failure', () async {
         // arrange
         when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
+            queryParameters: any(named: 'queryParameters'),),).thenAnswer(
           (_) async => ktestAppException.toLeft,
         );
 
         // act
         final resp = await bankDatasource.fetchBanks(skip: 0);
-
-        // assert
-        expect(resp.isLeft(), true);
-      });
-    },
-  );
-  group(
-    'Bank Remote Datasource Test(Search)\n',
-    () {
-      test(
-          'Should return [BankResponseModel] on success and the data is in valid format',
-          () async {
-        // arrange
-        when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
-          (_) async => Response(
-            statusCode: 200,
-            statusMessage: '',
-            data: ktestBanklist,
-          ).toRight,
-        );
-
-        // act
-        final resp = await bankDatasource.searchBanks(skip: 0, query: '');
-
-        // assert
-        expect(resp.isRight(), true);
-      });
-      test(
-          'should return [BankResponseModel] on success and the data is not in valid format',
-          () async {
-        // arrange
-        when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
-          (_) async => Response(
-            statusCode: 200,
-            statusMessage: '',
-            data: {},
-          ).toRight,
-        );
-
-        // act
-        final resp = await bankDatasource.searchBanks(skip: 0, query: '');
-
-        // assert
-        expect(resp.isRight(), true);
-      });
-      test('should return AppException on success but the data is null',
-          () async {
-        // arrange
-        when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
-          (_) async => Response(
-            statusCode: 200,
-            statusMessage: '',
-            data: null,
-          ).toRight,
-        );
-
-        // act
-        final resp = await bankDatasource.searchBanks(skip: 0, query: '');
-
-        // assert
-        expect(resp.isLeft(), true);
-      });
-      test('should return AppException on failure', () async {
-        // arrange
-        when(() => mockNetworkService.get(any(),
-            queryParameters: any(named: 'queryParameters'))).thenAnswer(
-          (_) async => ktestAppException.toLeft,
-        );
-
-        // act
-        final resp = await bankDatasource.searchBanks(skip: 0, query: '');
 
         // assert
         expect(resp.isLeft(), true);

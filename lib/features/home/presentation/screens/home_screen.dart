@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:khalti_task/features/home/presentation/providers/home_state_provider.dart';
@@ -41,7 +42,7 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
       if (isSearchActive) {
         notifier.searchBanks(searchController.text);
       } else {
-        notifier.fetchProducts();
+        notifier.fetchBanks();
       }
     }
   }
@@ -126,7 +127,7 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
           : state.hasData
               ? RefreshIndicator(
                   onRefresh: () async {
-                    ref.read(bankNotifierProvider.notifier).fetchProducts();
+                    ref.read(bankNotifierProvider.notifier).fetchBanks();
                   },
                   child: Column(
                     children: [
@@ -146,11 +147,11 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
                               return ListTile(
                                 leading: CircleAvatar(
                                     backgroundColor: Colors.grey.shade200,
-                                    child: Image.network(
-                                      product.logo ?? "",
-                                      errorBuilder: (_, __, ___) =>
-                                          const Icon(Icons.error_outline,
-                                              color: Colors.grey),
+                                    child: CachedNetworkImage(
+                                      imageUrl: product.logo ?? "",
+                                      errorWidget: (_, __, ___) => const Icon(
+                                          Icons.error_outline,
+                                          color: Colors.grey),
                                     )),
                                 title: Text(
                                   product.name ?? "",

@@ -5,9 +5,10 @@ import 'package:khalti_task/features/home/presentation/providers/state/home_noti
 import 'package:khalti_task/features/home/presentation/providers/state/home_state.dart';
 import 'package:khalti_task/services/bank_cache_service/domain/providers/current_bank_provider.dart';
 
+/// provider instance
 final bankNotifierProvider =
     StateNotifierProvider<BankNotifier, BankState>((ref) {
   final repository = ref.watch(bankRepositoryProvider);
   final cacheRepository = ref.watch(bankLocalRepositoryProvider);
-  return BankNotifier(repository, cacheRepository)..fetchProducts();
+  return BankNotifier(repository, cacheRepository)..fetchBanks();
 });

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:khalti_task/shared/data/remote/remote.dart'; 
+import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:khalti_task/shared/domain/models/response.dart' as response;
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 
@@ -22,7 +22,7 @@ mixin ExceptionHandlerMixin on NetworkService {
         ),
       );
     } catch (e) {
-      String message = '';
+      String? message = '';
       String identifier = '';
       int statusCode = 0;
       log(e.runtimeType.toString());
@@ -36,7 +36,10 @@ mixin ExceptionHandlerMixin on NetworkService {
 
         case DioException:
           e as DioException;
-          message = e.response?.data?['message'] ?? 'Internal Error occurred';
+
+          message =
+              "${e.response?.data?['message'] ?? "'Internal Error occurred'"}" ??
+                  'Internal Error occurred';
           statusCode = 1;
           identifier = 'DioException ${e.message} \nat  $endpoint';
           break;
@@ -48,7 +51,7 @@ mixin ExceptionHandlerMixin on NetworkService {
       }
       return Left(
         AppException(
-          message: message,
+          message: message ?? "",
           statusCode: statusCode,
           identifier: identifier,
         ),

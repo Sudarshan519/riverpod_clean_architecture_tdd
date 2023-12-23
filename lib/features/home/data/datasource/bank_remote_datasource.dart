@@ -3,29 +3,35 @@ import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 
+// ignore: one_member_abstracts
+/// bank datasource
 abstract class BankDatasource {
+  /// fetch bank
   Future<Either<AppException, BankResponseModel>> fetchBanks(
-      {required int skip});
-  Future<Either<AppException, BankResponseModel>> searchBanks(
-      {required int skip, required String query});
+      {required int skip,});
+ 
 }
 
+/// bank datasource implementation
 class BankRemoteDatasource extends BankDatasource {
-  final NetworkService networkService;
+  ///
   BankRemoteDatasource(this.networkService);
+
+  /// network service
+  final NetworkService networkService;
 
   @override
   Future<Either<AppException, BankResponseModel>> fetchBanks(
-      {required int skip}) async {
+      {required int skip,}) async {
     final response = await networkService.get(
       '/bank',
       queryParameters: {},
     );
 
     return response.fold(
-      (l) => Left(l),
+      Left.new,
       (r) {
-        final jsonData = r.data;
+        final jsonData = r.data as Map<String, dynamic>?;
         if (jsonData == null) {
           return Left(
             AppException(
@@ -41,10 +47,5 @@ class BankRemoteDatasource extends BankDatasource {
     );
   }
 
-  @override
-  Future<Either<AppException, BankResponseModel>> searchBanks(
-      {required int skip, required String query}) {
-    // TODO: implement searchBanks
-    throw UnimplementedError();
-  }
+  
 }

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:khalti_task/features/home/domain/repositories/bank_repository.dart';
 import 'package:khalti_task/features/home/presentation/providers/state/home_state.dart';
@@ -28,10 +26,11 @@ class BankNotifier extends StateNotifier<BankState> {
   var expiryMillisecond = const Duration(hours: 1).inMilliseconds;
 
   ///
-  int elapsedDurationInMilliseconds(current, previous) => current - previous;
+  int elapsedDurationInMilliseconds(int current, int previous) =>
+      current - previous;
 
   ///
-  bool isExpired(currentMillisecondEpoach) =>
+  bool isExpired(int currentMillisecondEpoach) =>
       currentMillisecondEpoach < expiryMillisecond;
 
   ///
@@ -39,26 +38,28 @@ class BankNotifier extends StateNotifier<BankState> {
       state.state != BankConcreteState.loading &&
       state.state != BankConcreteState.fetchingMore;
 
-  Future<void> fetchProducts() async {
+  /// fetch
+  Future<void> fetchBanks() async {
     /// check if data is expired and not empty
-    print(await bankCacheRepository.hasBank());
-    if (await bankCacheRepository.hasBank()) {
-      var cachedData = await bankCacheRepository.fetchBank();
-      print(cachedData);
-      updateStateFromResponse(cachedData);
-    } else if (isFetching &&
-        state.state != BankConcreteState.fetchedAllProducts) {
+    ///
+
+    if (isFetching && state.state != BankConcreteState.loaded) {
       state = state.copyWith(
         state: state.page > 0
             ? BankConcreteState.fetchingMore
             : BankConcreteState.loading,
         isLoading: true,
       );
+      if (await bankCacheRepository.hasBank()) {
+        final cachedData = await bankCacheRepository.fetchBank();
 
-      final response =
-          await bankRepository.fetchBanks(skip: state.page * PRODUCTS_PER_PAGE);
+        updateStateFromResponse(cachedData);
+      } else {
+        final response = await bankRepository.fetchBanks(
+            skip: state.page * PRODUCTS_PER_PAGE);
 
-      updateStateFromResponse(response);
+        updateStateFromResponse(response, saveData: true);
+      }
     }
   }
 
@@ -77,32 +78,13 @@ class BankNotifier extends StateNotifier<BankState> {
         matchingData.add(item);
       }
       state = state.copyWith(productList: matchingData);
-      // if (isFetching && state.state != BankConcreteState.fetchedAllProducts) {
-      //   state = state.copyWith(
-      //     state: state.page > 0
-      //         ? BankConcreteState.fetchingMore
-      //         : BankConcreteState.loading,
-      //     isLoading: true,
-      //   );
-
-      //   final response = await bankRepository.searchBank(
-      //     skip: state.page * PRODUCTS_PER_PAGE,
-      //     query: query,
-      //   );
-
-      //   updateStateFromResponse(response);
-      // } else {
-      //   state = state.copyWith(
-      //     state: BankConcreteState.fetchedAllProducts,
-      //     message: 'No more products available',
-      //     isLoading: false,
-      //   );
-      // }
     }
   }
 
-  void updateStateFromResponse(
-      Either<AppException, BankResponseModel> response) {
+  /// update state
+  ///
+  void updateStateFromResponse(Either<AppException, BankResponseModel> response,
+      {bool saveData = false}) {
     response.fold((failure) {
       state = state.copyWith(
         state: BankConcreteState.failure,
@@ -112,14 +94,14 @@ class BankNotifier extends StateNotifier<BankState> {
     }, (data) {
       final productList = data.records ?? [];
       memoryCachedData = data;
-      bankCacheRepository.saveBank(bank: data);
+      if (saveData) bankCacheRepository.saveBank(bank: data);
       cachedTime = DateTime.now().millisecondsSinceEpoch;
       final totalProducts = <Records>[...state.productList, ...productList];
 
       state = state.copyWith(
         productList: totalProducts,
         state: totalProducts.length == data.total_records
-            ? BankConcreteState.fetchedAllProducts
+            ? BankConcreteState.loaded
             : BankConcreteState.loaded,
         hasData: true,
         message: totalProducts.isEmpty ? 'No bank found' : '',
@@ -130,6 +112,7 @@ class BankNotifier extends StateNotifier<BankState> {
     });
   }
 
+  /// reset state
   void resetState() {
     state = const BankState.initial();
   }

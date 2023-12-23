@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() {
