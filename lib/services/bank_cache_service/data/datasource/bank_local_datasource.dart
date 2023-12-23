@@ -68,8 +68,9 @@ class BankLocalDatasource extends BankDataSource {
   @override
   Future<bool> hasBank() async {
     final previousTimeStamp = DateTime.tryParse(
-          await storageService.get(cachedDateTime) ??
-              "${DateTime(0).toString()}",
+          (await storageService.get(cachedDateTime) ??
+                  "${DateTime(0).toString()}")
+              .toString(),
         ) ??
         DateTime(10);
     final differrence = DateTime.now().difference(previousTimeStamp);

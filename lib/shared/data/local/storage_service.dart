@@ -6,7 +6,7 @@ abstract class StorageService {
 
   Future<bool> remove(String key);
 
-  Future<String?> get(String key);
+  Future<Object?> get(String key);
 
   Future<bool> set(String key, String data);
 
