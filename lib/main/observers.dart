@@ -1,7 +1,10 @@
+// ignore_for_file: strict_raw_type
+
 import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// 
 class Observers extends ProviderObserver {
   @override
   void didUpdateProvider(

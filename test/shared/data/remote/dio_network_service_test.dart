@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_setters_without_getters, strict_raw_type
+
 import 'package:dio/dio.dart';
 import 'package:khalti_task/shared/data/remote/dio_network_service.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -90,7 +92,9 @@ void main() {
 }
 
 class FakeDio extends Fake implements Dio {
+  ///
   Response? _reponse;
+
   set response(Response? res) {
     _reponse = res;
   }

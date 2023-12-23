@@ -68,7 +68,7 @@ class AppTheme {
       textTheme: TextThemes.textTheme,
       primaryTextTheme: TextThemes.primaryTextTheme,
       colorScheme: const ColorScheme.light(
-        primary: Color.fromARGB(255, 224, 224, 224),
+        primary: Color.fromARGB(255, 179, 149, 149),
         secondary: AppColors.white,
         error: AppColors.error,
       ),

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -7,7 +9,9 @@ import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:khalti_task/shared/domain/models/response.dart' as response;
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 
+///
 mixin ExceptionHandlerMixin on NetworkService {
+  ///
   Future<Either<AppException, response.Response>>
       handleException<T extends Object>(
           Future<Response<dynamic>> Function() handler,
@@ -22,9 +26,12 @@ mixin ExceptionHandlerMixin on NetworkService {
         ),
       );
     } catch (e) {
+      ///
       String? message = '';
-      String identifier = '';
-      int statusCode = 0;
+
+      ///
+      var identifier = '';
+      var statusCode = 0;
       log(e.runtimeType.toString());
       switch (e.runtimeType) {
         case SocketException:
@@ -38,8 +45,7 @@ mixin ExceptionHandlerMixin on NetworkService {
           e as DioException;
 
           message =
-              "${e.response?.data?['message'] ?? "'Internal Error occurred'"}" ??
-                  'Internal Error occurred';
+              "${e.response?.data?['message'] ?? 'Unable to connect to the server.'}";
           statusCode = 1;
           identifier = 'DioException ${e.message} \nat  $endpoint';
           break;
@@ -47,11 +53,11 @@ mixin ExceptionHandlerMixin on NetworkService {
         default:
           message = 'Unknown error occurred';
           statusCode = 2;
-          identifier = 'Unknown error ${e.toString()}\n at $endpoint';
+          identifier = 'Unknown error $e\n at $endpoint';
       }
       return Left(
         AppException(
-          message: message ?? "",
+          message: message,
           statusCode: statusCode,
           identifier: identifier,
         ),

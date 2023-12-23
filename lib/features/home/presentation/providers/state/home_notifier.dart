@@ -20,10 +20,10 @@ class BankNotifier extends StateNotifier<BankState> {
   BankResponseModel? memoryCachedData;
 
   ///
-  var cachedTime = 0;
+  int cachedTime = 0;
 
   ///
-  var expiryMillisecond = const Duration(hours: 1).inMilliseconds;
+  int expiryMillisecond = const Duration(hours: 1).inMilliseconds;
 
   ///
   int elapsedDurationInMilliseconds(int current, int previous) =>
@@ -42,21 +42,23 @@ class BankNotifier extends StateNotifier<BankState> {
   Future<void> fetchBanks() async {
     /// check if data is expired and not empty
     ///
-
-    if (isFetching && state.state != BankConcreteState.loaded) {
+    var hasBankData = await bankCacheRepository.hasBank();
+    if (state.state != BankConcreteState.loaded) {
       state = state.copyWith(
         state: state.page > 0
             ? BankConcreteState.fetchingMore
             : BankConcreteState.loading,
         isLoading: true,
       );
-      if (await bankCacheRepository.hasBank()) {
+
+      if (hasBankData) {
         final cachedData = await bankCacheRepository.fetchBank();
 
-        updateStateFromResponse(cachedData);
+        updateStateFromResponse(cachedData, saveData: true);
       } else {
         final response = await bankRepository.fetchBanks(
-            skip: state.page * PRODUCTS_PER_PAGE);
+          skip: 0,
+        );
 
         updateStateFromResponse(response, saveData: true);
       }
@@ -83,8 +85,10 @@ class BankNotifier extends StateNotifier<BankState> {
 
   /// update state
   ///
-  void updateStateFromResponse(Either<AppException, BankResponseModel> response,
-      {bool saveData = false}) {
+  void updateStateFromResponse(
+    Either<AppException, BankResponseModel> response, {
+    bool saveData = false,
+  }) {
     response.fold((failure) {
       state = state.copyWith(
         state: BankConcreteState.failure,
@@ -94,6 +98,7 @@ class BankNotifier extends StateNotifier<BankState> {
     }, (data) {
       final productList = data.records ?? [];
       memoryCachedData = data;
+      print(data);
       if (saveData) bankCacheRepository.saveBank(bank: data);
       cachedTime = DateTime.now().millisecondsSinceEpoch;
       final totalProducts = <Records>[...state.productList, ...productList];

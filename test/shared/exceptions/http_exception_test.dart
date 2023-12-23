@@ -1,8 +1,8 @@
-import 'package:khalti_task/shared/exceptions/http_exception.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khalti_task/shared/exceptions/http_exception.dart';
 
 void main() {
-  final AppException exception =
+  final exception =
       AppException(message: 'message', statusCode: 1, identifier: 'identifier');
   test(
     'toString() function returns the objects',

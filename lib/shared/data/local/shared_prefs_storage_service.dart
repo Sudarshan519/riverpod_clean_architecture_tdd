@@ -18,9 +18,9 @@ class SharedPrefsService implements StorageService {
   bool get hasInitialized => sharedPreferences != null;
 
   @override
-  Future<Object?> get(String key) async {
+  Future<String?> get(String key) async {
     sharedPreferences = await initCompleter.future;
-    return sharedPreferences!.get(key);
+    return sharedPreferences?.getString(key);
   }
 
   @override
@@ -44,6 +44,7 @@ class SharedPrefsService implements StorageService {
   @override
   Future<bool> set(String key, data) async {
     sharedPreferences = await initCompleter.future;
+
     return await sharedPreferences!.setString(key, data.toString());
   }
 }

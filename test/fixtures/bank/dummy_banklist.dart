@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_collection_literal
+
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 
 Map<String, dynamic> ktestbankRecord = {};

@@ -46,7 +46,7 @@ class BankLocalDatasource extends BankDataSource {
         AppException(
           identifier: 'BankLocalDatasource',
           statusCode: 404,
-          message: 'Bank not found',
+          message: 'Try again later',
         ),
       );
     }
@@ -58,8 +58,9 @@ class BankLocalDatasource extends BankDataSource {
   @override
   Future<bool> saveBank({required BankResponseModel bank}) async {
     await storageService.set(
-        cachedDateTime, jsonEncode(DateTime.now().toString()));
-
+      cachedDateTime,
+      DateTime.now().toString(),
+    );
     // ignore: unnecessary_await_in_return
     return await storageService.set(storageKey, jsonEncode(bank.toJson()));
   }
@@ -67,10 +68,12 @@ class BankLocalDatasource extends BankDataSource {
   @override
   Future<bool> hasBank() async {
     final previousTimeStamp = DateTime.tryParse(
-            (await storageService.get(cachedDateTime)).toString()) ??
+          await storageService.get(cachedDateTime) ??
+              "${DateTime(0).toString()}",
+        ) ??
         DateTime(10);
     final differrence = DateTime.now().difference(previousTimeStamp);
 
-    return differrence > const Duration(hours: 1);
+    return differrence < const Duration(hours: 1);
   }
 }

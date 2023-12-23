@@ -84,10 +84,10 @@ lib
 ┃ ┃ ┃ ┗ remote.dart
 ┃ ┣ domain
 ┃ ┃ ┣ models
-┃ ┃ ┃ ┣ product
-┃ ┃ ┃ ┃ ┣ product_model.dart
-┃ ┃ ┃ ┃ ┣ product_model.freezed.dart
-┃ ┃ ┃ ┃ ┗ product_model.g.dart
+┃ ┃ ┃ ┣ home
+┃ ┃ ┃ ┃ ┣ bank_model.dart
+┃ ┃ ┃ ┃ ┣ bank_model.freezed.dart
+┃ ┃ ┃ ┃ ┗ bank_model.g.dart
 ┃ ┃ ┃ ┣ user
 ┃ ┃ ┃ ┃ ┗ user_model.dart
 ┃ ┃ ┃ ┣ models.dart
@@ -156,9 +156,9 @@ test
 ┃ ┃ ┃ ┗ screens
 ┣ fixtures
 ┃ ┣ home
-┃ ┃ ┗ dummy_productlist.dart
+┃ ┃ ┗ dummy_banklist.dart
 ┃ ┣ data
-┃ ┃ ┣ product_response.dart
+┃ ┃ ┣ bank_response.dart
 ┃ ┃ ┗ user_map.dart
 ┃ ┣ dummy_data.dart
 ┃ ┣ test_fixture.dart
