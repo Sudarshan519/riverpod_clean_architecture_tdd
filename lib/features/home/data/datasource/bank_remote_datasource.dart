@@ -1,15 +1,18 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 // ignore: one_member_abstracts
 /// bank datasource
 abstract class BankDatasource {
   /// fetch bank
-  Future<Either<AppException, BankResponseModel>> fetchBanks(
-      {required int skip,});
- 
+  Future<Either<AppException, BankResponseModel>> fetchBanks({
+    required int skip,
+  });
 }
 
 /// bank datasource implementation
@@ -21,8 +24,31 @@ class BankRemoteDatasource extends BankDatasource {
   final NetworkService networkService;
 
   @override
-  Future<Either<AppException, BankResponseModel>> fetchBanks(
-      {required int skip,}) async {
+  Future<Either<AppException, BankResponseModel>> fetchBanks({
+    required int skip,
+  }) async {
+    var deviceModel = 'unknown';
+    try {
+      final deviceInfo = DeviceInfoPlugin();
+      if (Platform.isAndroid) {
+        await deviceInfo.androidInfo.then((info) {
+          deviceModel = info.model;
+        });
+      } else if (Platform.isIOS) {
+        await deviceInfo.iosInfo.then((info) {
+          deviceModel = info.model;
+        });
+      } else if (Platform.isLinux) {
+        await deviceInfo.linuxInfo.then((info) {
+          deviceModel = info.machineId ?? '';
+        });
+      } else {}
+    } catch (e) {
+      ///
+    }
+    networkService.updateHeader(
+      {'DEVICE_MODEL': 'FLTASSIGN_sudarshan519_$deviceModel'},
+    );
     final response = await networkService.get(
       '/bank',
       queryParameters: {},
@@ -46,6 +72,4 @@ class BankRemoteDatasource extends BankDatasource {
       },
     );
   }
-
-  
 }
