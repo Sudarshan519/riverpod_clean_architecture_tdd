@@ -54,7 +54,7 @@ class BankNotifier extends StateNotifier<BankState> {
       if (hasBankData) {
         final cachedData = await bankCacheRepository.fetchBank();
 
-        updateStateFromResponse(cachedData, saveData: true);
+        updateStateFromResponse(cachedData);
       } else {
         final response = await bankRepository.fetchBanks(
           skip: 0,
