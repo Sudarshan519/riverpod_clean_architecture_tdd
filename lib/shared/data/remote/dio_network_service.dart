@@ -1,8 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:khalti_task/configs/app_configs.dart';
-import 'package:khalti_task/shared/data/remote/network_service.dart';
-import 'package:khalti_task/shared/domain/models/either.dart';
+import 'package:khalti_task/shared/data/remote/network_service.dart'; 
 import 'package:khalti_task/shared/domain/models/response.dart' as response;
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 import 'package:khalti_task/shared/globals.dart';

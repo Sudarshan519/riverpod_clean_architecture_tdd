@@ -7,21 +7,18 @@ part of 'product_model.dart';
 // **************************************************************************
 
 _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
-      id: json['id'] as int? ?? 0,
-      title: json['title'] as String? ?? '',
-      description: json['description'] as String? ?? '',
-      thumbnail: json['thumbnail'] as String? ?? '',
-      brand: json['brand'] as String? ?? '',
-      category: json['category'] as String? ?? '',
-      rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
-      discountPercentage:
-          (json['discountPercentage'] as num?)?.toDouble() ?? 0.0,
-      stock: json['stock'] as int? ?? 0,
-      price: json['price'] as int? ?? 0,
-      images: (json['images'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      id: json['id'] as int,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      thumbnail: json['thumbnail'] as String,
+      brand: json['brand'] as String?,
+      category: json['category'] as String?,
+      rating: (json['rating'] as num?)?.toDouble(),
+      discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
+      stock: json['stock'] as int?,
+      price: json['price'] as int?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>

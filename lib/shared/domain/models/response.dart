@@ -1,4 +1,5 @@
-import 'package:khalti_task/shared/domain/models/either.dart';
+ 
+import 'package:dartz/dartz.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 
 class Response {
