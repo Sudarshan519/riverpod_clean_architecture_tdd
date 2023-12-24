@@ -17,5 +17,5 @@ Map<String, dynamic> productMap = {
   'brand': 'Apple',
   'category': 'smartphones',
   'thumbnail': '...',
-  'images': ['...', '...', '...']
+  'images': ['...', '...', '...'],
 };

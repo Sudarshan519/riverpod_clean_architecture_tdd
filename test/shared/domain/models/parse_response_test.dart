@@ -1,6 +1,8 @@
-import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
-import 'package:khalti_task/shared/domain/models/parse_response.dart'; 
+// ignore_for_file: avoid_dynamic_calls, require_trailing_commas
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
+import 'package:khalti_task/shared/domain/models/parse_response.dart';
 
 import '../../../fixtures/bank/dummy_banklist.dart';
 

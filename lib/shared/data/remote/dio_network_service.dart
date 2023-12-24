@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -9,7 +11,6 @@ import 'package:khalti_task/shared/globals.dart';
 import 'package:khalti_task/shared/mixins/exception_handler_mixin.dart';
 
 class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
-  final Dio dio;
   DioNetworkService(this.dio) {
     // this throws error while running test
     if (!kTestMode) {
@@ -20,6 +21,7 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
       }
     }
   }
+  final Dio dio;
 
   BaseOptions get dioBaseOptions => BaseOptions(
         baseUrl: baseUrl,
@@ -45,7 +47,7 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
 
   @override
   Future<Either<AppException, response.Response>> post(String endpoint,
-      {Map<String, dynamic>? data}) {
+      {Map<String, dynamic>? data,}) {
     final res = handleException(
       () => dio.post(
         endpoint,
@@ -57,8 +59,9 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
   }
 
   @override
+  // ignore: require_trailing_commas
   Future<Either<AppException, response.Response>> get(String endpoint,
-      {Map<String, dynamic>? queryParameters}) {
+      {Map<String, dynamic>? queryParameters,}) {
     final res = handleException(
       () => dio.get(
         endpoint,

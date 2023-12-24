@@ -1,12 +1,13 @@
+// ignore_for_file: one_member_abstracts, duplicate_ignore
+
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:khalti_task/shared/data/remote/remote.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 
-// ignore: one_member_abstracts
 /// bank datasource
 abstract class BankDatasource {
   /// fetch bank

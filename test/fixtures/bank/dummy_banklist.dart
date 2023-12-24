@@ -28,7 +28,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'pxYLCnYAPu3Zdq9ce83fsP',
@@ -47,7 +47,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'YKSXv2CRz2TxPu2ZotMxa6',
@@ -68,7 +68,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.citizensmobilebanking&hl=en',
       'app_store':
           'https://itunes.apple.com/np/app/citizens-smart/id881860234?mt=8',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': '4iZY5AEZ8HjLmrnRGDg7Ci',
@@ -89,7 +89,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.globalmobilebanking.sms.activities.main',
       'app_store':
           'https://apps.apple.com/np/app/global-smart-mobile-banking/id961884380',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'bPtmtFDJS7wSnGeHd8Bqd2',
@@ -108,7 +108,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'GDdZihkGsaNqmoLXeTnMA3',
@@ -128,7 +128,7 @@ Map<String, dynamic> ktestBankResponse = {
       'play_store':
           'https://play.google.com/store/apps/details?id=com.f1soft.kaskimobilebanking',
       'app_store': 'https://apps.apple.com/us/app/kamana-smart/id1222527168',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'dQrrdQWPL8o6WhN8oMGKUn',
@@ -148,7 +148,7 @@ Map<String, dynamic> ktestBankResponse = {
       'play_store':
           'https://play.google.com/store/apps/details?id=com.f1soft.kumarimobilebanking&hl=en&gl=US',
       'app_store': 'https://apps.apple.com/us/app/kumari-smart/id877156241',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'hy45dztCEYrtCYsQgvkHJ7',
@@ -169,7 +169,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.sunrisemobilebanking',
       'app_store':
           'https://itunes.apple.com/us/app/sunrisembanking/id663781578?ls=1&mt=8',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'SpTYV6Xgs7MgvMg5ceC5Z9',
@@ -190,7 +190,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.machmobilebanking.activities.main',
       'app_store':
           'https://itunes.apple.com/np/app/machhapuchchhre-mobile-money/id652696290?mt=8',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'GKgk9BLyF46rMyR94NGXPS',
@@ -209,7 +209,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': '9FZKq8Ws2QSVsXpMnGeZig',
@@ -227,7 +227,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'FUTHtraPxGdCe7zidmt4ZZ',
@@ -246,7 +246,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'jQaW7qrJuxArs73VzuSiuC',
@@ -267,7 +267,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.muktinathmobilebanking&hl=en',
       'app_store':
           'https://apps.apple.com/np/app/muktinath-mobile-banking/id1268390320',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'dGuFGdGkMrD9k9cx22KSJc',
@@ -286,7 +286,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'hTgiB9CT5m7juYPvinoSiV',
@@ -306,7 +306,7 @@ Map<String, dynamic> ktestBankResponse = {
       'play_store':
           'https://play.google.com/store/apps/details?id=com.f1soft.megafonebank.activities.starter',
       'app_store': 'https://apps.apple.com/np/app/nimb-smart/id901814671',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'fMfMFedgeKgUaEa7yUo7mj',
@@ -325,7 +325,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'ayCEFuEpkmkjBj3WVWRh32',
@@ -345,7 +345,7 @@ Map<String, dynamic> ktestBankResponse = {
       'play_store':
           'https://play.google.com/store/apps/details?id=com.f1soft.nicasiamobilebanking&hl=en',
       'app_store': 'https://apps.apple.com/np/app/nic-asia-mobank/id670919765',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'eFqYAKReYiDKjscjo3v6pN',
@@ -366,7 +366,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.kistmobilebanking.activities.main&hl=en&gl=US',
       'app_store':
           'https://apps.apple.com/np/app/prabhu-mobile-banking/id921919423',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'wYvFfFR9qCKsmjsZKJpUmZ',
@@ -387,7 +387,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.rastriyabanijyamobilebanking&hl=en&gl=US',
       'app_store':
           'https://apps.apple.com/us/app/rbb-mobile-banking/id881869839',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': '2WzbQ5DCfSNK9rtzWGHTdf',
@@ -406,7 +406,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'WfzZUGCd8fpTM785GhMdhY',
@@ -425,7 +425,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'dtiJjnJ8MkkHnDS6jYzX43',
@@ -446,7 +446,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.shangrilamobilebanking',
       'app_store':
           'https://itunes.apple.com/np/app/shangrila-banksmart/id921961790?mt=8',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'r89QuzUMeu5vF7G9Lhysnm',
@@ -467,7 +467,7 @@ Map<String, dynamic> ktestBankResponse = {
           'https://play.google.com/store/apps/details?id=com.f1soft.banksmart.siddhartha&hl=en',
       'app_store':
           'https://apps.apple.com/np/app/siddhartha-banksmart/id1161312612',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'gnZm48tH4iF4Ne6DRoswKV',
@@ -486,7 +486,7 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     },
     {
       'idx': 'dGRPzNQZ2uzbBSRkv6PfkB',
@@ -505,10 +505,10 @@ Map<String, dynamic> ktestBankResponse = {
       'has_mobile_banking': false,
       'play_store': '',
       'app_store': '',
-      'branches': []
+      'branches': [],
     }
-  ]
+  ],
 };
 BankResponseModel ktestBankResponseModel =
     BankResponseModel.fromJson(ktestBankResponse);
-var ktestBanklist = ktestBankResponseModel.records ?? [];
+List<Records> ktestBanklist = ktestBankResponseModel.records ?? [];

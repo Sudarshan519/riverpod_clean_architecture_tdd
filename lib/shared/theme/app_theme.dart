@@ -1,11 +1,13 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:khalti_task/shared/data/local/storage_service.dart';
 import 'package:khalti_task/shared/domain/providers/shared_preferences_storage_service_provider.dart';
 import 'package:khalti_task/shared/globals.dart';
 import 'package:khalti_task/shared/theme/app_colors.dart';
 import 'package:khalti_task/shared/theme/test_styles.dart';
 import 'package:khalti_task/shared/theme/text_theme.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final appThemeProvider = StateNotifierProvider<AppThemeModeNotifier, ThemeMode>(
   (ref) {
@@ -15,20 +17,20 @@ final appThemeProvider = StateNotifierProvider<AppThemeModeNotifier, ThemeMode>(
 );
 
 class AppThemeModeNotifier extends StateNotifier<ThemeMode> {
-  final StorageService storageService;
-
-  ThemeMode currentTheme = ThemeMode.light;
 
   AppThemeModeNotifier(this.storageService) : super(ThemeMode.light) {
     getCurrentTheme();
   }
+  final StorageService storageService;
+
+  ThemeMode currentTheme = ThemeMode.light;
 
   void toggleTheme() {
     state = state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     storageService.set(APP_THEME_STORAGE_KEY, state.name);
   }
 
-  void getCurrentTheme() async {
+  Future<void> getCurrentTheme() async {
     final theme = await storageService.get(APP_THEME_STORAGE_KEY);
     final value = ThemeMode.values.byName('${theme ?? 'light'}');
     state = value;

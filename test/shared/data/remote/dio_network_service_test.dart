@@ -1,8 +1,8 @@
-// ignore_for_file: avoid_setters_without_getters, strict_raw_type
+// ignore_for_file: avoid_setters_without_getters, strict_raw_type, inference_failure_on_collection_literal, lines_longer_than_80_chars
 
 import 'package:dio/dio.dart';
-import 'package:khalti_task/shared/data/remote/dio_network_service.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khalti_task/shared/data/remote/dio_network_service.dart';
 
 void main() {
   late DioNetworkService dioNetworkService;
@@ -24,7 +24,7 @@ void main() {
         fakeDio.response = Response(
           statusCode: 200,
           data: {},
-          requestOptions: RequestOptions(path: ''),
+          requestOptions: RequestOptions(),
         );
 
         final res = await dioNetworkService.post('', data: {});
@@ -50,7 +50,7 @@ void main() {
         fakeDio.response = Response(
           statusCode: 200,
           data: {},
-          requestOptions: RequestOptions(path: ''),
+          requestOptions: RequestOptions(),
         );
 
         final res = await dioNetworkService.post('', data: {});
@@ -86,7 +86,7 @@ void main() {
     'should update request header',
     () {
       expect(dioNetworkService.updateHeader({'token': 'randomString'}),
-          updatedHeader);
+          updatedHeader,);
     },
   );
 }
@@ -116,20 +116,20 @@ class FakeDio extends Fake implements Dio {
     if (_reponse == null) {
       throw DioException(requestOptions: RequestOptions(path: path));
     }
-    return _reponse as Response<T>;
+    return _reponse! as Response<T>;
   }
 
   @override
   Future<Response<T>> post<T>(String path,
-      {data,
+      {Object? data,
       Map<String, dynamic>? queryParameters,
       Options? options,
       CancelToken? cancelToken,
       ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress}) async {
+      ProgressCallback? onReceiveProgress,}) async {
     if (_reponse == null) {
       throw DioException(requestOptions: RequestOptions(path: path));
     }
-    return _reponse as Response<T>;
+    return _reponse! as Response<T>;
   }
 }

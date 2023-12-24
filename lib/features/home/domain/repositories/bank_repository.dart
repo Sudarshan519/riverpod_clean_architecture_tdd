@@ -1,3 +1,5 @@
+// ignore_for_file: one_member_abstracts
+
 import 'package:dartz/dartz.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';

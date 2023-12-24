@@ -1,4 +1,6 @@
 /// Storage service interface
+// ignore_for_file: public_member_api_docs, dangling_library_doc_comments
+
 abstract class StorageService {
   void init();
 

@@ -1,20 +1,22 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:khalti_task/features/home/domain/repositories/bank_repository.dart';
 import 'package:khalti_task/features/home/presentation/providers/state/home_state.dart';
 import 'package:khalti_task/services/bank_cache_service/domain/repositories/bank_cache_repository.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
 import 'package:khalti_task/shared/globals.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BankNotifier extends StateNotifier<BankState> {
-  final BankRepository bankRepository;
-  final BankCacheRepository bankCacheRepository;
-
+  ///
   BankNotifier(
     this.bankRepository,
     this.bankCacheRepository,
   ) : super(const BankState.initial());
+  final BankRepository bankRepository;
+  final BankCacheRepository bankCacheRepository;
 
   ///
   BankResponseModel? memoryCachedData;
@@ -42,7 +44,7 @@ class BankNotifier extends StateNotifier<BankState> {
   Future<void> fetchBanks() async {
     /// check if data is expired and not empty
     ///
-    var hasBankData = await bankCacheRepository.hasBank();
+    final hasBankData = await bankCacheRepository.hasBank();
     if (state.state != BankConcreteState.loaded) {
       state = state.copyWith(
         state: state.page > 0
@@ -54,7 +56,7 @@ class BankNotifier extends StateNotifier<BankState> {
       if (hasBankData) {
         final cachedData = await bankCacheRepository.fetchBank();
 
-        updateStateFromResponse(cachedData, saveData: true);
+        updateStateFromResponse(cachedData);
       } else {
         final response = await bankRepository.fetchBanks(
           skip: 0,
@@ -73,7 +75,7 @@ class BankNotifier extends StateNotifier<BankState> {
     }
 
     /// loop data items
-    for (final item in state.productList) {
+    for (final item in state.banklist) {
       /// filter [Record] Name and address
       if ((item.name ?? '').toLowerCase().contains(query.toLowerCase()) ||
           (item.address ?? '').toLowerCase().contains(query.toLowerCase())) {
@@ -98,10 +100,10 @@ class BankNotifier extends StateNotifier<BankState> {
     }, (data) {
       final productList = data.records ?? [];
       memoryCachedData = data;
-      print(data);
+
       if (saveData) bankCacheRepository.saveBank(bank: data);
       cachedTime = DateTime.now().millisecondsSinceEpoch;
-      final totalProducts = <Records>[...state.productList, ...productList];
+      final totalProducts = <Records>[...state.banklist, ...productList];
 
       state = state.copyWith(
         productList: totalProducts,

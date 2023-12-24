@@ -68,7 +68,7 @@ void main() {
       BankState(
         state: BankConcreteState.loaded,
         hasData: true,
-        productList: ktestBankResponseModel.records ?? [],
+        banklist: ktestBankResponseModel.records ?? [],
         page: 1,
         total: 100,
       ),

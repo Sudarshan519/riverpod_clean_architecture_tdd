@@ -10,7 +10,7 @@ import 'package:khalti_task/routes/app_route.dart';
 @RoutePage()
 class SplashScreen extends ConsumerStatefulWidget {
   ///
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   ///
   static const String routeName = '/splashScreen';
@@ -31,7 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       unawaited(AutoRouter.of(context).pushAndPopUntil(
         route,
         predicate: (_) => false,
-      ));
+      ),);
     });
   }
 
@@ -42,7 +42,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       body: const Center(
           child: FlutterLogo(
         size: 60,
-      )),
+      ),),
     );
   }
 }

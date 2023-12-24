@@ -1,11 +1,13 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
-import 'package:khalti_task/shared/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:khalti_task/shared/theme/app_theme.dart';
 
 class HomeDrawer extends ConsumerWidget {
   const HomeDrawer({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,7 +56,7 @@ class HomeDrawer extends ConsumerWidget {
                       color: Theme.of(context).iconTheme.color,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

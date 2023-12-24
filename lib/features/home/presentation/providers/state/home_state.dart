@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, lines_longer_than_80_chars
 import 'package:equatable/equatable.dart';
 import 'package:khalti_task/shared/domain/models/bank/bank_response_model.dart';
 
@@ -12,7 +12,7 @@ enum BankConcreteState {
 }
 
 class BankState extends Equatable {
-  final List<Records> productList;
+  final List<Records> banklist;
   final int total;
   final int page;
   final bool hasData;
@@ -20,7 +20,7 @@ class BankState extends Equatable {
   final String message;
   final bool isLoading;
   const BankState({
-    this.productList = const [],
+    this.banklist = const [],
     this.isLoading = false,
     this.hasData = false,
     this.state = BankConcreteState.initial,
@@ -30,7 +30,7 @@ class BankState extends Equatable {
   });
 
   const BankState.initial({
-    this.productList = const [],
+    this.banklist = const [],
     this.total = 0,
     this.page = 0,
     this.isLoading = false,
@@ -50,7 +50,7 @@ class BankState extends Equatable {
   }) {
     return BankState(
       isLoading: isLoading ?? this.isLoading,
-      productList: productList ?? this.productList,
+      banklist: productList ?? banklist,
       total: total ?? this.total,
       page: page ?? this.page,
       hasData: hasData ?? this.hasData,
@@ -61,9 +61,9 @@ class BankState extends Equatable {
 
   @override
   String toString() {
-    return 'homeState(isLoading:$isLoading, productLength: ${productList.length},total:$total page: $page, hasData: $hasData, state: $state, message: $message)';
+    return 'homeState(isLoading:$isLoading, productLength: ${banklist.length},total:$total page: $page, hasData: $hasData, state: $state, message: $message)';
   }
 
   @override
-  List<Object?> get props => [productList, page, hasData, state, message];
+  List<Object?> get props => [banklist, page, hasData, state, message];
 }

@@ -1,4 +1,6 @@
 
+// ignore_for_file: public_member_api_docs
+
 import 'package:dartz/dartz.dart';
 import 'package:khalti_task/shared/domain/models/response.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';

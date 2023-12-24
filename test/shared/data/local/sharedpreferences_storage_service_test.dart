@@ -1,6 +1,6 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:khalti_task/shared/data/local/shared_prefs_storage_service.dart';
 import 'package:khalti_task/shared/data/local/storage_service.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../fixtures/data/user_map.dart';

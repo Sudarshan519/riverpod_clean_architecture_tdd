@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
@@ -135,8 +137,7 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
                   },
                   child: Column(
                     children: [
-                      if (state.productList.isEmpty)
-                        const Text('No banks found'),
+                      if (state.banklist.isEmpty) const Text('No banks found'),
                       Expanded(
                         child: Scrollbar(
                           controller: scrollController,
@@ -146,9 +147,9 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
                               color: Colors.grey.shade100,
                             ),
                             controller: scrollController,
-                            itemCount: state.productList.length,
+                            itemCount: state.banklist.length,
                             itemBuilder: (context, index) {
-                              final product = state.productList[index];
+                              final product = state.banklist[index];
                               return ListTile(
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.grey.shade200,
@@ -218,13 +219,16 @@ class _HomeScreenScreenState extends ConsumerState<HomeScreen> {
                               .textTheme
                               .headlineSmall
                               ?.copyWith(
-                                  fontSize: 18,
-                                  color: const Color.fromARGB(255, 217, 133, 127)),
+                                fontSize: 18,
+                                color: const Color.fromARGB(255, 217, 133, 127),
+                              ),
                         ),
                       ),
                     ],
                   ),
                 ),
+      // bottomNavigationBar:
+      //     _bannerAd != null ? AdWidget(ad: _bannerAd!) : Container(),
     );
   }
 

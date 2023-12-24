@@ -1,8 +1,10 @@
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:flutter_test/flutter_test.dart';
 import 'package:khalti_task/features/home/data/datasource/bank_remote_datasource.dart';
 import 'package:khalti_task/shared/data/remote/network_service.dart';
 import 'package:khalti_task/shared/domain/models/response.dart';
 import 'package:khalti_task/shared/exceptions/http_exception.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../../fixtures/bank/dummy_banklist.dart';

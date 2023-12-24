@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names, use_setters_to_change_properties, avoid_classes_with_only_static_members
+// ignore_for_file: constant_identifier_names, use_setters_to_change_properties, avoid_classes_with_only_static_members, lines_longer_than_80_chars, public_member_api_docs
 enum AppEnvironment { DEV, STAGING, PROD }
 
 abstract class EnvInfo {

@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs, unnecessary_await_in_return
+
 import 'dart:async';
 
 import 'package:khalti_task/shared/data/local/storage_service.dart';
@@ -42,8 +44,8 @@ class SharedPrefsService implements StorageService {
   }
 
   @override
-  Future<bool> set(String key, data) async {
+  Future<bool> set(String key, String data) async {
     sharedPreferences = await initCompleter.future;
-    return await sharedPreferences!.setString(key, data.toString());
+    return await sharedPreferences!.setString(key, data);
   }
 }

@@ -1,4 +1,4 @@
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: lines_longer_than_80_chars, avoid_dynamic_calls
 
 import 'dart:async';
 import 'dart:developer';
@@ -15,7 +15,7 @@ mixin ExceptionHandlerMixin on NetworkService {
   Future<Either<AppException, response.Response>>
       handleException<T extends Object>(
           Future<Response<dynamic>> Function() handler,
-          {String endpoint = ''}) async {
+          {String endpoint = '',}) async {
     try {
       final res = await handler();
       return Right(

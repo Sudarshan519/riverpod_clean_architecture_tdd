@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:khalti_task/shared/theme/app_theme.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// ignore_for_file: directives_ordering, public_member_api_docs
 
-import '../routes/app_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:khalti_task/shared/theme/app_theme.dart';
+
+import 'package:khalti_task/routes/app_route.dart';
 
 class MyApp extends ConsumerWidget {
   MyApp({super.key});

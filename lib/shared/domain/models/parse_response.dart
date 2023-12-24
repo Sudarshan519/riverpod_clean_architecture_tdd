@@ -12,6 +12,14 @@ class ParseResponse<T> {
   });
 
   ///
+  factory ParseResponse.fromMap(dynamic json,
+      {required T Function(Map<String, dynamic>) modifier,}) {
+    return ParseResponse<T>(
+      data: modifier(json as Map<String, dynamic>),
+    );
+  }
+
+  ///
   final bool success;
 
   ///
@@ -22,12 +30,4 @@ class ParseResponse<T> {
 
   ///
   final T? data;
-
-  ///
-  factory ParseResponse.fromMap(dynamic json,
-      {required T Function(Map<String, dynamic>) modifier}) {
-    return ParseResponse<T>(
-      data: modifier(json as Map<String, dynamic>),
-    );
-  }
 }

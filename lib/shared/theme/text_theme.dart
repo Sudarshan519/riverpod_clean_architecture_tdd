@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:khalti_task/shared/theme/app_colors.dart';
 import 'package:khalti_task/shared/theme/test_styles.dart';

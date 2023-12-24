@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:dartz/dartz.dart';
 import 'package:khalti_task/services/bank_cache_service/data/datasource/bank_local_datasource.dart';
 import 'package:khalti_task/services/bank_cache_service/domain/repositories/bank_cache_repository.dart';

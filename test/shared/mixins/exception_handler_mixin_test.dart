@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_function_invocation
+
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -18,7 +20,7 @@ void main() {
         () async {
           when(() => mockDioNetworkServide.dio.get(any())).thenAnswer(
             (_) async => Response(
-              requestOptions: RequestOptions(path: ''),
+              requestOptions: RequestOptions(),
             ),
           );
           final resp = await mockDioNetworkServide.get('');
@@ -43,7 +45,7 @@ void main() {
           when(() => mockDioNetworkServide.dio.get(any())).thenThrow(
             const SocketException(''),
           );
-          final resp = (await mockDioNetworkServide.get(''));
+          final resp = await mockDioNetworkServide.get('');
           resp.fold(
             (l) {
               expect(l.statusCode, 0);
@@ -56,7 +58,7 @@ void main() {
         'handle exception handles DioException with statusCode 1',
         () async {
           when(() => mockDioNetworkServide.dio.get(any())).thenThrow(
-            DioException(requestOptions: RequestOptions(path: '')),
+            DioException(requestOptions: RequestOptions()),
           );
           final resp = await mockDioNetworkServide.get('');
           resp.fold(
