@@ -326,5 +326,5 @@ lib
 
 ### About Me
 
-Do visit my [portfolio site](https://utsavghimire.com.np) or connect with me on [linkedin](https://www.linkedin.com/in/utsav-ghimire-10352a18b/)
+Do visit my [portfolio site](https://jobsserach.vercel.app/)
 # riverpod_clear_architecture_tdd
